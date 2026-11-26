@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "38605661938",
+    "project_id": "lifelens-ai-41b74",
+    "storage_bucket": "lifelens-ai-41b74.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38605661938:android:107b8ddc1536ea3295d26b",
+        "android_client_info": {
+          "package_name": "com.example.lifelens_ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvGBPRrwdXcC4AQwf-6da8fhQyIkrQ0Eg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
