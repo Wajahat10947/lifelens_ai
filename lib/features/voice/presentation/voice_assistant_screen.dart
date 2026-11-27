@@ -201,15 +201,13 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
       setState(() {
         if (message.contains('quota') || message.contains('429')) {
           _error =
-              'Gemini quota khatam ho gayi hai. '
-              'Baad mein dobara try karo.';
+              'Gemini request limit reached. '
+              'Please try again later.';
         } else {
           _error =
-              'AI response nahi mil saka. '
+              'Unable to get an AI response. '
               'Please try again.';
         }
-
-        _status = 'AI request failed';
       });
     } finally {
       if (mounted) {
