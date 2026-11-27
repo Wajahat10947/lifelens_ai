@@ -72,5 +72,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+		<string>LifeLens AI uses the microphone for voice questions.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+		<string>LifeLens AI converts spoken questions into text.</string>
 </dict>
 </plist>

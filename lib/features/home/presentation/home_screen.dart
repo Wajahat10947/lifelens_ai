@@ -12,6 +12,9 @@ import '../../auth/data/auth_service.dart';
 import '../../profile/presentation/profile_screen.dart';
 import '../../scanner/presentation/scanner_screen.dart';
 import '../../history/presentation/scan_history_screen.dart';
+import '../../voice/presentation/voice_assistant_screen.dart';
+import '../../learning/presentation/ai_learning_screen.dart';
+import '../../fix_it/presentation/ai_fix_it_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final String profileName;
@@ -393,6 +396,14 @@ class HomeScreen extends StatelessWidget {
                           'AI Learning',
                           'Learn anything',
                           AppColors.purple,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const AiLearningScreen(),
+                              ),
+                            );
+                          },
                         ),
                       ),
 
@@ -405,6 +416,14 @@ class HomeScreen extends StatelessWidget {
                           'AI Voice',
                           'Talk with AI',
                           AppColors.cyan,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const VoiceAssistantScreen(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -422,6 +441,14 @@ class HomeScreen extends StatelessWidget {
                           'AI Fix-It',
                           'Solve problems',
                           Colors.orangeAccent,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const AiFixItScreen(),
+                              ),
+                            );
+                          },
                         ),
                       ),
 

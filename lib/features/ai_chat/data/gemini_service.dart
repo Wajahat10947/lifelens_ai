@@ -1,6 +1,3 @@
-
-import 'dart:typed_data';
-
 import 'package:firebase_ai/firebase_ai.dart';
 import 'package:flutter/foundation.dart';
 
@@ -13,9 +10,24 @@ class GeminiService {
   // TEXT AI
   Future<String> askQuestion(String question) async {
     final response = await _model.generateContent([
-      Content.text(
-        'Answer in simple Roman Urdu: $question',
-      ),
+      Content.text('''
+You are LifeLens AI.
+
+Language rules:
+- If the user's actual question is in English,
+  reply in English.
+- If the user's actual question is in Roman Urdu,
+  reply in Roman Urdu using Latin letters.
+- If the user's question is in Urdu script,
+  reply in Urdu.
+- Do not choose the language based on
+  English instructions surrounding the question.
+- Use clear Markdown formatting.
+- Keep answers simple and beginner-friendly.
+
+Request:
+$question
+'''),
     ]);
 
     return response.text ?? 'No response received';
@@ -50,27 +62,17 @@ Keep paragraphs short.
 Do not add unnecessary horizontal separators.
 ''');
 
-    final imagePart = InlineDataPart(
-      mimeType,
-      bytes,
-    );
+    final imagePart = InlineDataPart(mimeType, bytes);
 
     // Maximum 3 attempts
     const maxAttempts = 1;
 
-    for (int attempt = 1;
-        attempt <= maxAttempts;
-        attempt++) {
+    for (int attempt = 1; attempt <= maxAttempts; attempt++) {
       try {
-        debugPrint(
-          'Gemini Vision attempt: $attempt',
-        );
+        debugPrint('Gemini Vision attempt: $attempt');
 
         final response = await _model.generateContent([
-          Content.multi([
-            prompt,
-            imagePart,
-          ]),
+          Content.multi([prompt, imagePart]),
         ]);
 
         final answer = response.text?.trim();
@@ -106,9 +108,7 @@ Do not add unnecessary horizontal separators.
         }
 
         // Wait 2 seconds, then 4 seconds
-        final delay = Duration(
-          seconds: attempt * 2,
-        );
+        final delay = Duration(seconds: attempt * 2);
 
         debugPrint(
           'Server busy. Retrying in '
