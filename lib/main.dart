@@ -15,12 +15,22 @@ Future<void> main() async {
   );
 
   await FirebaseAppCheck.instance.activate(
+    // Web App Check
     providerWeb: kDebugMode
         ? WebDebugProvider()
-        : ReCaptchaV3Provider('6Le0FSkuAAAAACyhJ1PZZ2Y4Mb7xc8X20cZU5CwL'),
+        : ReCaptchaV3Provider(
+            '6Le0FSkuAAAAACyhJ1PZZ2Y4Mb7xc8X20cZU5CwL',
+          ),
 
-    providerAndroid: const AndroidDebugProvider(),
-    providerApple: const AppleDebugProvider(),
+    // Android App Check
+    providerAndroid: kDebugMode
+        ? const AndroidDebugProvider()
+        : const AndroidPlayIntegrityProvider(),
+
+    // iOS App Check
+    providerApple: kDebugMode
+        ? const AppleDebugProvider()
+        : const AppleDeviceCheckProvider(),
   );
 
   runApp(const LifeLensApp());
